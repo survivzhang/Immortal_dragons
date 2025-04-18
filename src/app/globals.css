@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdf5e6; /* 奶油白 背景 */
-  --foreground: #8b5a2b; /* 焦糖棕 文字 */
-  --primary: #b22222; /* 酒红 标题 */
-  --secondary: #556b2f; /* 橄榄绿 按钮 */
-  --sec_background: #c77b36; /* 米色 按钮背景 */
+  --background: #001f3f;
+  --foreground: #c0c0c0;
+  --primary: #00bfff;
+  --secondary: #00ffff;
+  --sec_background: #1e90ff;
 }
 
 @theme inline {
@@ -17,11 +17,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fdf5e6; /* 奶油白 背景 */
-    --foreground: #8b5a2b; /* 焦糖棕 文字 */
-    --primary: #b22222; /* 酒红 标题 */
-    --secondary: #556b2f; /* 橄榄绿 按钮 */
-    --sec_background: #c77b36; /* 米色 按钮背景 */
+    --background: #001f3f; /* 奶油白 背景 */
+    --foreground: #c0c0c0; /* 焦糖棕 文字 */
+    --primary: #00bfff; /* 酒红 标题 */
+    --secondary: #00ffff; /* 橄榄绿 按钮 */
+    --sec_background: #1e90ff; /* 米色 按钮背景 */
   }
 }
 
