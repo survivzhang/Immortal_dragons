@@ -1,7 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 import Snowfall from "@/components/canvasbg";
+import ContactButton from "@/components/ContactButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,16 +15,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-primary`}
       >
         <Snowfall />
-        <Sidebar />
+        <Navbar />
         <main className="min-h-screen p-8 mr-[60px]">{children}</main>
+        <Footer />
+        <ContactButton />
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
