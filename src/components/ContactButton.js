@@ -11,17 +11,17 @@ const ContactButton = () => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-50">
+    <div className="relative">
       <button
         onClick={toggleContact}
-        className="flex items-center space-x-2 bg-secondary/90 hover:bg-secondary px-4 py-2 rounded-lg shadow-lg transition-all duration-300"
+        className="flex items-center space-x-2 bg-secondary/90 hover:bg-secondary px-3 py-1.5 rounded-lg shadow-lg transition-all duration-300"
       >
-        <Image src="/mail.svg" alt="Contact" width={24} height={24} />
-        <span className="text-white">Contact</span>
+        <Image src="/naruto.png" alt="Contact" width={20} height={20} />
+        <span className="text-white text-m">Contact</span>
       </button>
 
       {isOpen && (
-        <div className="absolute bottom-full right-0 mb-4 w-64 bg-secondary/95 rounded-lg shadow-xl p-4 space-y-4">
+        <div className="absolute top-full right-0 mt-2 w-64 bg-secondary/95 rounded-lg shadow-xl p-4 space-y-4">
           {/* Email */}
           <a
             href="mailto:zzcnhy@gmail.com"
@@ -32,11 +32,11 @@ const ContactButton = () => {
             <Image
               src="/mail.svg"
               alt="mail"
-              width={30}
-              height={30}
+              width={24}
+              height={24}
               className="mr-4"
             />
-            <span className="text-white">zzcnhy@gmail.com</span>
+            <span className="text-white text-base">zzcnhy@gmail.com</span>
           </a>
 
           {/* LinkedIn */}
@@ -49,11 +49,11 @@ const ContactButton = () => {
             <Image
               src="/Linkedln.svg"
               alt="LinkedIn"
-              width={30}
-              height={30}
+              width={24}
+              height={24}
               className="mr-4"
             />
-            <span className="text-white">LinkedIn</span>
+            <span className="text-white text-base">LinkedIn</span>
           </a>
 
           {/* GitHub */}
@@ -66,11 +66,11 @@ const ContactButton = () => {
             <Image
               src="/github.svg"
               alt="GitHub"
-              width={30}
-              height={30}
+              width={24}
+              height={24}
               className="mr-4"
             />
-            <span className="text-white">Github</span>
+            <span className="text-white text-base">Github</span>
           </a>
 
           {/* Instagram */}
@@ -83,11 +83,11 @@ const ContactButton = () => {
             <Image
               src="/ins.svg"
               alt="Instagram"
-              width={35}
-              height={35}
+              width={24}
+              height={24}
               className="mr-4"
             />
-            <span className="text-white">Instagram</span>
+            <span className="text-white text-base">Instagram</span>
           </a>
         </div>
       )}

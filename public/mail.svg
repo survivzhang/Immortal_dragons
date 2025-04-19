@@ -1,0 +1,14 @@
+<svg
+  viewBox="0 0 20 20"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="#c77b36"
+>
+  <g id="SVGRepo_bgCarrier" stroke-width="0" />
+  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+  <g id="SVGRepo_iconCarrier">
+    <path
+      d="M2 4C2 3.44772 2.44772 3 3 3H17C17.5523 3 18 3.44772 18 4V16C18 16.5523 17.5523 17 17 17H3C2.44772 17 2 16.5523 2 16V4ZM16 5H4V15H16V5ZM5 6H15V7.5L10 10.5L5 7.5V6Z"
+      fill="#c77b36"
+    />
+  </g>
+</svg>

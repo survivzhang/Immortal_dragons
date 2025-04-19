@@ -3,7 +3,6 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import Snowfall from "@/components/canvasbg";
-import ContactButton from "@/components/ContactButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +24,6 @@ const RootLayout = ({ children }) => {
         <Navbar />
         <main className="min-h-screen p-8 mr-[60px]">{children}</main>
         <Footer />
-        <ContactButton />
       </body>
     </html>
   );
