@@ -130,9 +130,13 @@ const EarthGlobe = ({ coordinates }) => {
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      mountRef.current.removeEventListener("mouseenter", handleMouseEnter);
-      mountRef.current.removeEventListener("mouseleave", handleMouseLeave);
-      mountRef.current.removeChild(renderer.domElement);
+
+      if (mountRef.current) {
+        mountRef.current.removeEventListener("mouseenter", handleMouseEnter);
+        mountRef.current.removeEventListener("mouseleave", handleMouseLeave);
+        mountRef.current.removeChild(renderer.domElement);
+      }
+
       scene.remove(earth);
       geometry.dispose();
       material.dispose();
