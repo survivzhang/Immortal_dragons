@@ -8,17 +8,34 @@ const EarthGlobe = ({ coordinates }) => {
   const mountRef = useRef(null);
 
   useEffect(() => {
+    if (!mountRef.current) return;
+
+    // 清理之前的内容
+    while (mountRef.current.firstChild) {
+      mountRef.current.removeChild(mountRef.current.firstChild);
+    }
+
+    // Get container dimensions
+    const container = mountRef.current;
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
     // Scene setup
     const scene = new THREE.Scene();
+
+    // Camera setup
     const camera = new THREE.PerspectiveCamera(
       48,
-      window.innerWidth / window.innerHeight,
+      containerWidth / containerHeight,
       0.1,
       1000
     );
+    camera.position.z = 30;
+
+    // Renderer setup
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth * 0.5, window.innerHeight * 0.5);
-    mountRef.current.appendChild(renderer.domElement);
+    renderer.setSize(containerWidth, containerHeight);
+    container.appendChild(renderer.domElement);
 
     // Earth setup
     const geometry = new THREE.SphereGeometry(8, 64, 64);
@@ -42,7 +59,7 @@ const EarthGlobe = ({ coordinates }) => {
     // Convert lat/lon to 3D position
     const lat = -31.9514; // Perth's latitude
     const lon = -115.8617; // Perth's longitude
-    const radius = 8.1; // 增加半径以匹配新的地球大小
+    const radius = 8.1;
 
     // Convert to radians
     const latRad = THREE.MathUtils.degToRad(lat);
@@ -53,7 +70,7 @@ const EarthGlobe = ({ coordinates }) => {
     marker.position.y = radius * Math.sin(latRad);
     marker.position.z = radius * Math.cos(latRad) * Math.sin(lonRad);
 
-    // Add marker to Earth instead of a separate group
+    // Add marker to Earth
     earth.add(marker);
 
     // Add text label
@@ -74,12 +91,12 @@ const EarthGlobe = ({ coordinates }) => {
       map: texture,
       transparent: true,
       opacity: 1,
-      depthTest: false, // 确保标签始终可见
+      depthTest: false,
     });
     const label = new THREE.Sprite(labelMaterial);
     label.position.copy(marker.position);
-    label.position.y += 1.2; // 增加标签高度
-    label.scale.set(1.5, 0.8, 1); // 增加标签大小
+    label.position.y += 1.2;
+    label.scale.set(1.5, 0.8, 1);
     earth.add(label);
 
     // Lighting
@@ -89,31 +106,18 @@ const EarthGlobe = ({ coordinates }) => {
     pointLight.position.set(10, 10, 10);
     scene.add(pointLight);
 
-    // Camera position
-    camera.position.z = 20; // 调整相机位置以适应更大的地球
-
     // Controls
     const controls = new OrbitControls(camera, renderer.domElement);
+    controls.target.set(0, 0, 0); // Set the target to the center of the Earth
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.rotateSpeed = 0.5;
-
-    // Hover rotation
-    let isHovered = false;
-    const handleMouseEnter = () => {
-      isHovered = true;
-    };
-    const handleMouseLeave = () => {
-      isHovered = false;
-    };
-
-    mountRef.current.addEventListener("mouseenter", handleMouseEnter);
-    mountRef.current.addEventListener("mouseleave", handleMouseLeave);
+    controls.update(); // Ensure controls are updated initially
 
     // Animation
     const animate = () => {
       requestAnimationFrame(animate);
-      earth.rotation.y += 0.005; // 自动旋转速度
+      earth.rotation.y += 0.005;
       controls.update();
       renderer.render(scene, camera);
     };
@@ -121,9 +125,13 @@ const EarthGlobe = ({ coordinates }) => {
 
     // Handle resize
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth * 0.5, window.innerHeight * 0.5);
+      if (mountRef.current) {
+        const newWidth = mountRef.current.clientWidth;
+        const newHeight = mountRef.current.clientHeight;
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(newWidth, newHeight);
+      }
     };
     window.addEventListener("resize", handleResize);
 
@@ -132,8 +140,6 @@ const EarthGlobe = ({ coordinates }) => {
       window.removeEventListener("resize", handleResize);
 
       if (mountRef.current) {
-        mountRef.current.removeEventListener("mouseenter", handleMouseEnter);
-        mountRef.current.removeEventListener("mouseleave", handleMouseLeave);
         mountRef.current.removeChild(renderer.domElement);
       }
 
@@ -147,7 +153,18 @@ const EarthGlobe = ({ coordinates }) => {
   return (
     <div
       ref={mountRef}
-      className="w-full h-full flex items-center justify-center"
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
     />
   );
 };
