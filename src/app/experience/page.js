@@ -78,7 +78,7 @@ export default function Experience() {
         setCurrentProject((prev) => (prev + 1) % projects.length);
         setTimeout(() => setIsAnimating(false), 500);
       }
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, [isAnimating]);
@@ -110,7 +110,7 @@ export default function Experience() {
   return (
     <div className="min-h-screen bg-primary relative">
       <main className="p-8 relative z-5">
-        <div className="flex justify-center items-center h-auto">
+        <div className="flex justify-center items-center h-auto mb-8">
           <Text3D text="My Experience" />
         </div>
         <div className="mt-0 pt-0">

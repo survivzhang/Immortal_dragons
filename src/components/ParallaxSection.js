@@ -17,7 +17,7 @@ const ParallaxSection = ({ children, imageUrl }) => {
           sectionTop < windowHeight * 0.8 &&
           sectionTop > -sectionRef.current.offsetHeight
         ) {
-          const parallaxOffset = scrollPosition * 0.2;
+          const parallaxOffset = scrollPosition * 0.02;
           imageRef.current.style.transform = `translateY(${parallaxOffset}px)`;
         }
       }

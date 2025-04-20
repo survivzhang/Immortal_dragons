@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import EarthGlobe from "@/components/EarthGlobe";
-import Text3D from "@/components/Text3D";
+import dynamic from "next/dynamic";
 
+const Burning = dynamic(() => import("@/components/burning"), {
+  ssr: false,
+});
 // About me sections
 const aboutSections = [
   {
@@ -16,10 +19,11 @@ const aboutSections = [
   },
   {
     id: 2,
-    title: "CREATING MEANINGFUL EXPERIENCES",
-    characteristic: "DEDICATED TO CLEAN CODE AND USER-CENTERED SOLUTIONS",
+    title: "SKILLS",
+    characteristic:
+      "HTML, CSS, JavaScript, React, Next.js, Tailwind CSS, Python, SQL, Git, Docker",
     content:
-      "Throughout my studies and projects, I've focused on building responsive, accessible web applications that solve real problems. I believe in writing maintainable code that balances technical excellence with practical user needs.",
+      "Have a strong interest in both frontend and backend development, and always try to learn new technologies.",
   },
   {
     id: 3,
@@ -82,8 +86,10 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-primary relative">
       <main className="p-8 relative z-10">
-        <div className="flex justify-center items-center h-auto">
-          <Text3D text="About Me" />
+        <div className="sticky top-0 z-20 bg-primary pb-8">
+          <div className="flex justify-center items-center h-auto">
+            <h1 className="text-4xl font-bold text-secondary">About Me</h1>
+          </div>
         </div>
 
         {/* Main Content */}
@@ -106,22 +112,24 @@ const AboutPage = () => {
             {aboutSections.map((section, index) => (
               <section
                 key={section.id}
-                className="min-h-screen flex items-center justify-center px-12"
+                className="min-h-screen flex  justify-center px-12 items-center"
                 style={{
                   opacity: activeSection === index ? 1 : 0.5,
                   transition: "opacity 0.5s ease",
                 }}
               >
                 <div className="max-w-2xl">
-                  <h2 className="text-4xl font-bold text-secondary mb-4">
-                    {section.title}
-                  </h2>
-                  <p className="text-2xl font-serif text-primary mb-6">
-                    {section.characteristic}
-                  </p>
-                  <p className="text-lg text-foreground leading-relaxed">
-                    {section.content}
-                  </p>
+                  <Burning>
+                    <h2 className="text-4xl font-bold text-secondary mb-4">
+                      {section.title}
+                    </h2>
+                    <p className="text-2xl font-serif text-primary mb-6">
+                      {section.characteristic}
+                    </p>
+                    <p className="text-lg text-foreground leading-relaxed">
+                      {section.content}
+                    </p>
+                  </Burning>
                 </div>
               </section>
             ))}

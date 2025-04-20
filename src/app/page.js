@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
-import Text3D from "@/components/Text3D";
 
 const Burning = dynamic(() => import("@/components/burning"), {
   ssr: false,
