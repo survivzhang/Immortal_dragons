@@ -17,12 +17,12 @@ const Burning = ({ children }) => {
     // 生成随机位置的火焰
     const generateFlames = () => {
       const newFlames = [];
-      for (let i = 0; i < 66; i++) {
+      for (let i = 0; i < 55; i++) {
         newFlames.push({
           id: i,
           top: Math.random() * 120 - 20, // -30 到 30 之间，让火焰覆盖在文字上
           left: Math.random() * 110 - 10, // 0 到 100 之间
-          size: Math.random() * 80 + 20, // 30 到 60 之间，让火焰更密集
+          size: Math.random() * 120 + 10, // 30 到 60 之间，让火焰更密集
         });
       }
       setFlames(newFlames);

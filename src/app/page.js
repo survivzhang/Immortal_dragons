@@ -1,18 +1,26 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
+import Text3D from "@/components/Text3D";
 
 const Burning = dynamic(() => import("@/components/burning"), {
   ssr: false,
 });
 
 const HomePage = () => {
+  useEffect(() => {
+    return () => {
+      // 确保在页面切换时清理所有状态
+      window.scrollTo(0, 0);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-primary">
-      <main className="p-8">
-        <div className="flex justify-center mt-8">
-          <h1 className="text-4xl text-center font-bold">
+    <div className="min-h-screen bg-primary relative">
+      <main className="p-8 relative z-10">
+        <div className="flex justify-center items-center h-auto]">
+          <h1 className="text-4xl font-bold text-primary">
             Welcome to My Portfolio
           </h1>
         </div>

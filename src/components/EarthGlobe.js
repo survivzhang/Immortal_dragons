@@ -11,7 +11,7 @@ const EarthGlobe = ({ coordinates }) => {
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      75,
+      48,
       window.innerWidth / window.innerHeight,
       0.1,
       1000

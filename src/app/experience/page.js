@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
+import Text3D from "@/components/Text3D";
 
 // Project data
 const projects = [
@@ -100,19 +101,19 @@ export default function Experience() {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-primary">
-      <main className="p-8">
-        <div className="flex justify-center mt-8">
-          <h1 className="text-4xl text-center font-bold font-serif text-primary">
-            My Experience
-          </h1>
-        </div>
-        <div className="py-16">
-          <h2 className="text-4xl font-serif font-bold text-primary mb-12 text-center">
-            My Projects
-          </h2>
+  useEffect(() => {
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
+  return (
+    <div className="min-h-screen bg-primary relative">
+      <main className="p-8 relative z-5">
+        <div className="flex justify-center items-center h-auto">
+          <Text3D text="My Experience" />
+        </div>
+        <div className="mt-0 pt-0">
           <div className="relative">
             <div className="flex flex-col items-center justify-center">
               <div className="max-w-7xl w-full">
