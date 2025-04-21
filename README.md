@@ -25,7 +25,7 @@ The application features a fully interactive 3D Earth globe rendered with Three.
 // - Interactive OrbitControls for user manipulation
 ```
 
-![Earth Globe Screenshot]
+![Earth Globe Screenshot](assets/3D_earth.png)
 
 <!-- Screenshot placeholder - Earth Globe component -->
 
@@ -41,7 +41,7 @@ Custom 3D text elements created with Three.js TextGeometry, featuring dynamic li
 // - Responsive design for different device sizes
 ```
 
-![3D Text Screenshot]
+![3D Text Screenshot](assets/3DText.png)
 
 <!-- Screenshot placeholder - 3D Text component -->
 
@@ -57,7 +57,7 @@ A dynamic canvas-based background with particle effects that respond to user mou
 // - Optimized performance with requestAnimationFrame
 ```
 
-![Canvas Background Screenshot]
+![Canvas Background Screenshot](assets/canvasbg.png)
 
 <!-- Screenshot placeholder - Canvas background -->
 
@@ -70,7 +70,7 @@ Various animation effects implemented throughout the application:
 - 3D object animations
 - Interactive UI elements
 
-![Animation Effects Screenshot]
+![Animation Effects Screenshot](assets/flametext.png)
 
 <!-- Screenshot placeholder - Animation effects -->
 
@@ -81,6 +81,8 @@ The application is fully responsive, with specific optimizations for:
 - Mobile devices (reduced geometry complexity, adjusted camera positioning)
 - Tablets
 - Desktop browsers
+
+![Moblie Effects Screenshot](assets/moblie.png)
 
 ### Performance Optimizations
 
