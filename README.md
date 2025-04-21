@@ -1,7 +1,93 @@
 # Immortal_dragons
-React+WebGL
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## React + Three.js + WebGL Portfolio Application
+
+## Technical Implementation
+
+### Core Technologies
+
+- **Next.js**: Framework for server-rendered React applications
+- **Three.js**: JavaScript 3D library that makes WebGL simpler
+- **React**: JavaScript library for building user interfaces
+- **WebGL**: Web Graphics Library for rendering interactive 2D and 3D graphics
+
+### Key Components
+
+#### 1. Interactive 3D Earth Globe
+
+The application features a fully interactive 3D Earth globe rendered with Three.js. It includes realistic textures, lighting effects, and custom markers for locations.
+
+```javascript
+// Implementation highlights from EarthGlobe.js
+// - Uses THREE.SphereGeometry for the earth base
+// - Applies realistic textures with bump mapping
+// - Custom location markers with labels
+// - Interactive OrbitControls for user manipulation
+```
+
+![Earth Globe Screenshot]
+
+<!-- Screenshot placeholder - Earth Globe component -->
+
+#### 2. 3D Text Rendering
+
+Custom 3D text elements created with Three.js TextGeometry, featuring dynamic lighting, animations, and responsive sizing.
+
+```javascript
+// Implementation highlights from Text3D.js
+// - FontLoader and TextGeometry for 3D text creation
+// - Phong material with specular highlights
+// - Smooth animations with sine wave motion
+// - Responsive design for different device sizes
+```
+
+![3D Text Screenshot]
+
+<!-- Screenshot placeholder - 3D Text component -->
+
+#### 3. Interactive Canvas Background
+
+A dynamic canvas-based background with particle effects that respond to user mouse movements.
+
+```javascript
+// Implementation highlights from canvasbg.js
+// - HTML5 Canvas for efficient particle rendering
+// - Physics-based mouse interaction
+// - Responsive to viewport changes
+// - Optimized performance with requestAnimationFrame
+```
+
+![Canvas Background Screenshot]
+
+<!-- Screenshot placeholder - Canvas background -->
+
+#### 4. Animation Effects
+
+Various animation effects implemented throughout the application:
+
+- Parallax scrolling effects
+- Burning text effect
+- 3D object animations
+- Interactive UI elements
+
+![Animation Effects Screenshot]
+
+<!-- Screenshot placeholder - Animation effects -->
+
+### Responsive Design
+
+The application is fully responsive, with specific optimizations for:
+
+- Mobile devices (reduced geometry complexity, adjusted camera positioning)
+- Tablets
+- Desktop browsers
+
+### Performance Optimizations
+
+- Dynamic import of heavy components
+- Canvas optimization techniques
+- Three.js scene cleanup on component unmount
+- Event listener management
 
 ## Getting Started
 
@@ -18,19 +104,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
