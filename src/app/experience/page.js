@@ -109,8 +109,8 @@ export default function Experience() {
 
   return (
     <div className="min-h-screen bg-primary relative">
-      <main className="p-8 relative z-5">
-        <div className="flex justify-center items-center h-auto mb-8">
+      <main className="p-4 md:p-8 relative z-5">
+        <div className="flex justify-center items-center h-auto mb-4 md:mb-8">
           <Text3D text="My Experience" />
         </div>
         <div className="mt-0 pt-0">
@@ -118,11 +118,11 @@ export default function Experience() {
             <div className="flex flex-col items-center justify-center">
               <div className="max-w-7xl w-full">
                 <div
-                  className={`flex flex-row h-[70vh] rounded-lg overflow-hidden transition-transform duration-500 ${
+                  className={`flex flex-col md:flex-row h-auto md:h-[70vh] rounded-lg overflow-hidden transition-transform duration-500 ${
                     isAnimating ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  <div className="w-1/2 relative h-full overflow-hidden">
+                  <div className="w-full md:w-1/2 relative h-[40vh] md:h-full overflow-hidden">
                     <div className="absolute inset-0 transition-all duration-500">
                       <Image
                         src={projects[currentProject].image}
@@ -132,19 +132,19 @@ export default function Experience() {
                       />
                     </div>
                   </div>
-                  <div className="w-1/2 p-8 flex flex-col">
-                    <div className="space-y-12">
-                      <h3 className="text-3xl font-serif font-bold text-primary mb-4">
+                  <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col">
+                    <div className="space-y-6 md:space-y-12">
+                      <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary mb-2 md:mb-4">
                         {projects[currentProject].title}
                       </h3>
-                      <p className="text-foreground mb-6 text-lg font-serif">
+                      <p className="text-base md:text-lg font-serif text-foreground mb-3 md:mb-6">
                         {projects[currentProject].description}
                       </p>
-                      <div className="flex flex-wrap gap-2 mb-8">
+                      <div className="flex flex-wrap gap-2 mb-4 md:mb-8">
                         {projects[currentProject].tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full"
+                            className="px-2 md:px-3 py-1 bg-secondary/10 text-secondary text-xs md:text-sm rounded-full"
                           >
                             {tag}
                           </span>
@@ -153,7 +153,7 @@ export default function Experience() {
                       <div>
                         {projects[currentProject].status === "completed" ? (
                           <button
-                            className="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors"
+                            className="px-4 md:px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors"
                             onClick={() =>
                               window.open(projects[currentProject].link)
                             }
@@ -162,7 +162,7 @@ export default function Experience() {
                           </button>
                         ) : (
                           <button
-                            className="px-6 py-2 bg-secondary text-white rounded-full"
+                            className="px-4 md:px-6 py-2 bg-secondary text-white rounded-full"
                             disabled
                           >
                             In Progress
@@ -175,13 +175,13 @@ export default function Experience() {
               </div>
 
               {/* Navigation controls moved to bottom */}
-              <div className="flex items-center justify-center mt-8 space-x-4">
+              <div className="flex items-center justify-center mt-6 md:mt-8 space-x-4">
                 <button
                   onClick={handlePrev}
                   className="p-2 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5 md:w-6 md:h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -206,7 +206,7 @@ export default function Experience() {
                           setTimeout(() => setIsAnimating(false), 500);
                         }
                       }}
-                      className={`w-3 h-3 rounded-full transition-colors ${
+                      className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
                         currentProject === index
                           ? "bg-primary"
                           : "bg-secondary/20"
@@ -220,7 +220,7 @@ export default function Experience() {
                   className="p-2 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5 md:w-6 md:h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

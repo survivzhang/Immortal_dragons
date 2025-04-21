@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
@@ -7,6 +7,19 @@ import helvetikerFont from "three/examples/fonts/helvetiker_regular.typeface.jso
 
 const Text3D = ({ text = "Default Text", className = "" }) => {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if we're on mobile initially
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -17,7 +30,7 @@ const Text3D = ({ text = "Default Text", className = "" }) => {
     const height = container.clientHeight;
 
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    camera.position.z = 32; // 调整相机距离，确保文字可见
+    camera.position.z = isMobile ? 40 : 32; // Adjust camera distance based on device
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -31,13 +44,13 @@ const Text3D = ({ text = "Default Text", className = "" }) => {
 
     const textGeometry = new TextGeometry(text, {
       font: font,
-      size: 5, // 文字大小
+      size: isMobile ? 3.5 : 5, // Smaller text on mobile
       height: 0.5, // 文字厚度
-      curveSegments: 12,
+      curveSegments: isMobile ? 8 : 12, // Lower segments for performance on mobile
       bevelEnabled: true,
       bevelThickness: 0.03,
       bevelSize: 0.02,
-      bevelSegments: 5,
+      bevelSegments: isMobile ? 3 : 5,
     });
 
     textGeometry.center();
@@ -82,6 +95,7 @@ const Text3D = ({ text = "Default Text", className = "" }) => {
       const newWidth = container.clientWidth;
       const newHeight = container.clientHeight;
       camera.aspect = newWidth / newHeight;
+      camera.position.z = window.innerWidth < 768 ? 40 : 32; // Dynamically adjust camera distance
       camera.updateProjectionMatrix();
       renderer.setSize(newWidth, newHeight);
     };
@@ -95,7 +109,7 @@ const Text3D = ({ text = "Default Text", className = "" }) => {
       }
       renderer.dispose();
     };
-  }, [text]);
+  }, [text, isMobile]);
 
   return (
     <div
@@ -103,7 +117,7 @@ const Text3D = ({ text = "Default Text", className = "" }) => {
       className={className}
       style={{
         width: "100%",
-        height: "50px",
+        height: isMobile ? "40px" : "50px",
         position: "relative",
       }}
     />

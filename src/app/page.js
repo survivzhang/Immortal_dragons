@@ -17,46 +17,46 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-primary relative">
-      <main className="p-8 relative z-10">
-        <div className="flex justify-center items-center h-auto]">
-          <h1 className="text-4xl font-bold text-primary">
+      <main className="p-4 md:p-8 relative z-10">
+        <div className="flex justify-center items-center h-auto">
+          <h1 className="text-2xl md:text-4xl font-bold text-primary">
             Welcome to My Portfolio
           </h1>
         </div>
         <div className="flex justify-center mt-0">
-          <div className="flex-grow flex flex-row items-center px-6 py-16 relative">
-            <div className="flex-shrink-0 mr-8">
+          <div className="flex-grow flex flex-col md:flex-row items-center px-2 md:px-6 py-8 md:py-16 relative">
+            <div className="w-full md:w-auto md:flex-shrink-0 md:mr-8 mb-8 md:mb-0 flex justify-center">
               <div className="relative">
                 <Image
                   src="/profilo.png"
                   alt="Profile"
-                  width={600}
-                  height={800}
-                  className="max-w-none h-auto transform scale-100"
+                  width={300}
+                  height={400}
+                  className="max-w-none h-auto transform scale-100 md:w-[600px]"
                 />
               </div>
             </div>
             <Burning>
               <div className="w-full flex flex-col text-center">
-                <p className="text-xl text-secondary mb-4 font-serif">
+                <p className="text-lg md:text-xl text-secondary mb-2 md:mb-4 font-serif">
                   Hey there! My name is
                 </p>
-                <h1 className="text-5xl font-serif font-bold text-primary mb-2">
+                <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-1 md:mb-2">
                   ZICHEN ZHANG
                 </h1>
-                <p className="text-xl text-secondary mb-4 font-serif">
+                <p className="text-lg md:text-xl text-secondary mb-2 md:mb-4 font-serif">
                   or you can call me
                 </p>
-                <h2 className="text-4xl font-serif font-bold text-primary mb-6">
+                <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-3 md:mb-6">
                   ALEX
                 </h2>
-                <p className="text-xl text-foreground mb-2 font-serif">
+                <p className="text-base md:text-xl text-foreground mb-1 md:mb-2 font-serif">
                   I am a postgraduate student in UWA,
                 </p>
-                <p className="text-xl text-foreground mb-2 font-serif">
+                <p className="text-base md:text-xl text-foreground mb-1 md:mb-2 font-serif">
                   Web Developer, basketball player
                 </p>
-                <p className="text-xl text-foreground mb-8 font-serif">
+                <p className="text-base md:text-xl text-foreground mb-4 md:mb-8 font-serif">
                   ... and just a human
                 </p>
               </div>

@@ -14,15 +14,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata = {
+  title: "Zichen Zhang - Portfolio",
+  description: "Web developer and creative thinker",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+};
+
 const RootLayout = ({ children }) => {
   return (
-    <html suppressHydrationWarning>
+    <html suppressHydrationWarning lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-primary`}
       >
         <Snowfall />
         <Navbar />
-        <main className="min-h-screen p-8 mr-[60px]">{children}</main>
+        <main className="min-h-screen p-4 md:p-8 mr-0 md:mr-[60px]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
